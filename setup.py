@@ -20,7 +20,7 @@ DOWNLOAD_URL        = 'http://github.com/stefanv/scikits.image'
 VERSION             = '0.3dev'
 
 import os
-import setuptools
+#import setuptools
 from numpy.distutils.core import setup
 try:
     from distutils.command.build_py import build_py_2to3 as build_py
@@ -85,7 +85,12 @@ if __name__ == "__main__":
         configuration=configuration,
         install_requires=[],
         namespace_packages=['scikits'],
-        packages=setuptools.find_packages(),
+        #packages=setuptools.find_packages(),
+        packages=['scikits', 'scikits.image', 'scikits.image.io',
+            'scikits.image.color', 'scikits.image.morphology',
+            'scikits.image.opencv', 'scikits.image.graph',
+            'scikits.image.scripts', 'scikits.image.transform',
+            'scikits.image.filter', 'scikits.image.io._plugins'],
         include_package_data=True,
         zip_safe=False, # the package can run out of an .egg file
 
