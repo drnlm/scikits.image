@@ -1,4 +1,4 @@
-from util import prepare_for_display, window_manager, GuiLockError
+from .util import prepare_for_display, window_manager, GuiLockError
 import numpy as np
 import sys
 
@@ -87,7 +87,7 @@ def imshow(arr, fancy=False):
     if not fancy:
         iw = ImageWindow(arr, window_manager)
     else:
-        from scivi import SciviImageWindow
+        from .scivi import SciviImageWindow
         iw = SciviImageWindow(arr, window_manager)
 
     iw.show()
@@ -98,7 +98,7 @@ def _app_show():
     if app and window_manager.has_windows():
         app.exec_()
     else:
-        print 'No images to show.  See `imshow`.'
+        print('No images to show.  See `imshow`.')
 
 
 def imsave(filename, img):

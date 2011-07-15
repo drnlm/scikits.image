@@ -5,7 +5,7 @@
 __all__ = ['use', 'available', 'call', 'info']
 
 import warnings
-from ConfigParser import ConfigParser
+from configparser import ConfigParser
 import os.path
 from glob import glob
 
@@ -42,8 +42,8 @@ def _scan_plugins():
 
         for p in provides:
             if not p in plugin_store:
-                print "Plugin `%s` wants to provide non-existent `%s`." \
-                      " Ignoring." % (name, p)
+                print("Plugin `%s` wants to provide non-existent `%s`." \
+                      " Ignoring." % (name, p))
 
         plugin_provides[name] = valid_provides
         plugin_module_name[name] = os.path.basename(f)[:-4]
@@ -113,7 +113,7 @@ def use(name, kind=None):
 
     """
     if kind is None:
-        kind = plugin_store.keys()
+        kind = list(plugin_store.keys())
     else:
         if not kind in plugin_provides[name]:
             raise RuntimeError("Plugin %s does not support `%s`." % \
@@ -147,7 +147,7 @@ def available(loaded=False):
 
     """
     active_plugins = set()
-    for plugin_func in plugin_store.itervalues():
+    for plugin_func in plugin_store.values():
         for plugin, func in plugin_func:
             active_plugins.add(plugin)
 
@@ -182,8 +182,8 @@ def _load(plugin):
     provides = plugin_provides[plugin]
     for p in provides:
         if not hasattr(plugin_module, p):
-            print "Plugin %s does not provide %s as advertised.  Ignoring." % \
-                  (plugin, p)
+            print("Plugin %s does not provide %s as advertised.  Ignoring." % \
+                  (plugin, p))
         else:
             store = plugin_store[p]
             func = getattr(plugin_module, p)

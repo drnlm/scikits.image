@@ -170,7 +170,7 @@ class ApiDocWriter(object):
         ''' Parse module defined in *uri* '''
         filename = self._uri2path(uri)
         if filename is None:
-            print filename, 'erk'
+            print(filename, 'erk')
             # nothing that we could handle here.
             return ([],[])
         f = open(filename, 'rt')
@@ -194,8 +194,8 @@ class ApiDocWriter(object):
         classes : list of str
             A list of (public) class names in the module.
         """
-        exec 'import ' + uri
-        exec 'mod = ' + uri
+        exec('import ' + uri)
+        exec('mod = ' + uri)
         # find all public objects in the module.
         obj_strs = [obj for obj in dir(mod) if not obj.startswith('_')]
         functions = []
@@ -253,7 +253,7 @@ class ApiDocWriter(object):
         # get the names of all classes and functions
         functions, classes = self._parse_module_with_import(uri)
         if not len(functions) and not len(classes) and DEBUG:
-            print 'WARNING: Empty -', uri  # dbg
+            print('WARNING: Empty -', uri)  # dbg
             return ''
 
         # Make a shorter version of the uri that omits the package name for
@@ -481,7 +481,7 @@ class ApiDocWriter(object):
             relpath = (outdir + os.path.sep).replace(relative_to + os.path.sep, '')
         else:
             relpath = outdir
-        print "outdir: ", relpath
+        print("outdir: ", relpath)
         idx = open(path,'wt')
         w = idx.write
         w('.. AUTO-GENERATED FILE -- DO NOT EDIT!\n\n')

@@ -42,8 +42,8 @@ source_suffix = '.txt'
 master_doc = 'contents'
 
 # General information about the project.
-project = u'scikits.image'
-copyright = u'2009, SciPy Developers'
+project = 'scikits.image'
+copyright = '2009, SciPy Developers'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -191,8 +191,8 @@ htmlhelp_basename = 'scikitsimagedoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('contents', 'scikitsimage.tex', u'scikits.image Documentation',
-   u'SciPy Developers', 'manual'),
+  ('contents', 'scikitsimage.tex', 'scikits.image Documentation',
+   'SciPy Developers', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

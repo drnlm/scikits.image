@@ -1,4 +1,4 @@
-from colorconv import *
+from .colorconv import *
 
 
 

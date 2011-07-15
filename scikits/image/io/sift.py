@@ -39,7 +39,7 @@ def _sift_read(f, mode='SIFT'):
         f = file(f, 'r')
 
     if mode == 'SIFT':
-        nr_features, feature_len = map(int, f.readline().split())
+        nr_features, feature_len = list(map(int, f.readline().split()))
         datatype = np.dtype([('row', float), ('column', float),
                             ('scale', float), ('orientation', float),
                             ('data', (float, feature_len))])

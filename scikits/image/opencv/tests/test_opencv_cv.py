@@ -1,6 +1,6 @@
 # test for the opencv_cv extension module
 
-from __future__ import with_statement
+
 
 import os
 import sys
@@ -12,7 +12,7 @@ from numpy.testing import *
 from scikits.image import data_dir
 
 if sys.version_info[0] < 3:
-    import cPickle
+    import pickle
 else:
     import pickle as cPickle
 
@@ -258,7 +258,7 @@ class TestDrawChessboardCorners(object):
 class TestCalibrateCamera2(object):
     @opencv_skip
     def test_cvCalibrateCamera2_Identity(self):
-        ys = xs = range(4)
+        ys = xs = list(range(4))
 
         image_points = np.array( [(4 * x, 4 * y) for x in xs for y in ys ],
                 dtype=np.float64)
@@ -286,7 +286,7 @@ class TestCalibrateCamera2(object):
     @dec.slow
     def test_cvCalibrateCamera2_KnownData(self):
         (object_points,points_count,image_points,intrinsics,distortions) =\
-             cPickle.load(open(os.path.join(
+             pickle.load(open(os.path.join(
                  data_dir, "cvCalibrateCamera2TestData.pck"), "rb")
              )
 

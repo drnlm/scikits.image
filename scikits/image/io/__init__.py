@@ -4,9 +4,9 @@ The following plug-ins are available:
 
 """
 
-from _plugins import use as use_plugin
-from _plugins import available as plugins
-from _plugins import info as plugin_info
+from ._plugins import use as use_plugin
+from ._plugins import available as plugins
+from ._plugins import info as plugin_info
 
 # Add this plugin so that we can read images by default
 use_plugin('null')
@@ -16,10 +16,10 @@ try:
 except ImportError:
     pass
 
-from sift import *
-from collection import *
+from .sift import *
+from .collection import *
 
-from io import *
+from .io import *
 
 def _update_doc(doc):
     """Add a list of plugins to the module docstring, formatted as

@@ -39,7 +39,7 @@ def _load_library(libname, loader_path):
                     return ctypes.windll[libpath]
                 else:
                     return ctypes.cdll[libpath]
-            except OSError, e:
+            except OSError as e:
                 pass
 
         raise e
@@ -73,7 +73,7 @@ API = {
 
 # Albert's ctypes pattern
 def register_api(lib,api):
-    for f, (restype, argtypes) in api.items():
+    for f, (restype, argtypes) in list(api.items()):
         func = getattr(lib, f)
         func.restype = restype
         func.argtypes = argtypes

@@ -1,3 +1,3 @@
-from grey import *
-from selem import *
+from .grey import *
+from .selem import *
 from ccomp import label

@@ -1,6 +1,6 @@
 """Data structures to hold collections of images, with optional caching."""
 
-from __future__ import with_statement
+
 
 __all__ = ['MultiImage', 'ImageCollection', 'imread']
 
@@ -8,7 +8,7 @@ from glob import glob
 import os.path
 
 import numpy as np
-from io import imread
+from .io import imread
 
 
 class MultiImage(object):
@@ -128,7 +128,7 @@ class MultiImage(object):
         if -numframes <= n < numframes:
             n = n % numframes
         else:
-            raise IndexError, "There are only %s frames in the image"%numframes
+            raise IndexError("There are only %s frames in the image"%numframes)
 
         if self.conserve_memory:
             if not self._cached == n:
@@ -226,7 +226,7 @@ class ImageCollection(object):
     """
     def __init__(self, load_pattern, conserve_memory=True, load_func=None):
         """Load and manage a collection of images."""
-        if isinstance(load_pattern, basestring):
+        if isinstance(load_pattern, str):
             load_pattern = load_pattern.split(':')
             self._files = []
             for pattern in load_pattern:
@@ -289,7 +289,7 @@ class ImageCollection(object):
         if -num <= n < num:
             n = n % num
         else:
-            raise IndexError, "There are only %s images in the collection"%num
+            raise IndexError("There are only %s images in the collection"%num)
         return n
 
     def __iter__(self):

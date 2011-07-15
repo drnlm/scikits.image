@@ -17,7 +17,7 @@ else:
     PIL_available = True
 
 if sys.version_info[0] > 2:
-    basestring = str
+    str = str
 
 
 class TestImageCollection():
@@ -86,7 +86,7 @@ class TestMultiImage():
 
     @skipif(not PIL_available)
     def test_files_property(self):
-        assert isinstance(self.img.filename, basestring)
+        assert isinstance(self.img.filename, str)
 
         def set_filename(f):
             self.img.filename = f

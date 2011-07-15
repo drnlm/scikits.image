@@ -3,7 +3,7 @@ from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import (QWidget, QStackedWidget, QSlider, QVBoxLayout,
                          QGridLayout, QLabel)
 
-from util import ColorMixer
+from .util import ColorMixer
 
 
 class IntelligentSlider(QWidget):

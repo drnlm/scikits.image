@@ -93,7 +93,7 @@ def homography(image, H, output_shape=None, order=1,
     _stackcopy(coords[1,...], tf_coords[...,0])
 
     # colour-coordinate mapping
-    coords[2,...] = range(bands)
+    coords[2,...] = list(range(bands))
 
     # Prefilter not necessary for order 1 interpolation
     prefilter = order > 1

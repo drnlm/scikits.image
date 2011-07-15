@@ -41,7 +41,7 @@ References
 .. [4] http://en.wikipedia.org/wiki/CIE_1931_color_space
 """
 
-from __future__ import division
+
 
 __all__ = ['convert_colorspace', 'rgb2hsv', 'hsv2rgb', 'rgb2xyz', 'xyz2rgb',
            'rgb2rgbcie', 'rgbcie2rgb', 'rgb2grey', 'rgb2gray']
@@ -94,10 +94,10 @@ def convert_colorspace(arr, fromspace, tospace):
 
     fromspace = fromspace.upper()
     tospace = tospace.upper()
-    if not fromspace in fromdict.keys():
-        raise ValueError, 'fromspace needs to be one of %s'%fromdict.keys()
-    if not tospace in todict.keys():
-        raise ValueError, 'tospace needs to be one of %s'%todict.keys()
+    if not fromspace in list(fromdict.keys()):
+        raise ValueError('fromspace needs to be one of %s'%list(fromdict.keys()))
+    if not tospace in list(todict.keys()):
+        raise ValueError('tospace needs to be one of %s'%list(todict.keys()))
 
     return todict[tospace](fromdict[fromspace](arr))
 
@@ -108,7 +108,7 @@ def _prepare_colorarray(arr, dtype=np.float32):
 
     if arr.ndim != 3 or arr.shape[2] != 3:
         msg = "the input array must be have a shape == (.,.,3))"
-        raise ValueError, msg
+        raise ValueError(msg)
 
     return arr.astype(dtype)
 

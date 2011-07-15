@@ -92,7 +92,7 @@ def imread_collection(load_pattern, conserve_memory=True):
     ext_list = []
     for filename in load_pattern:
         hdulist = pyfits.open(filename)
-        for n, hdu in zip(range(len(hdulist)), hdulist):
+        for n, hdu in zip(list(range(len(hdulist))), hdulist):
             if isinstance(hdu, pyfits.ImageHDU) or \
                isinstance(hdu, pyfits.PrimaryHDU):
                 # Ignore (primary) header units with no data (use '.size'
